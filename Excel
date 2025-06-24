@@ -1,0 +1,103 @@
+Here's a **simple explanation** of the concept and steps shown in your screenshot titled **"Data Driven Test through Excel Test"** from your Software Testing Lab Manual:
+
+---
+
+## ✅ What is Data Driven Testing (DDT)?
+
+**Data Driven Testing (DDT)** means:
+
+> You write a test once and then **run it multiple times with different input values** (from an Excel file, DB, etc.).
+
+Instead of hardcoding usernames/passwords, you store them in an Excel file and automate testing for **all** those values.
+
+---
+
+## 📌 Key Benefits:
+
+* ✅ Increases **test coverage**
+* ✅ Allows **positive + negative cases** in one test
+* ✅ Easy to update test data (just edit Excel)
+* ✅ No need to rewrite test script
+
+---
+
+## 🔄 DDT Process (in Loop):
+
+1. **Retrieve input** from Excel (e.g., usernames, passwords)
+2. **Enter** into form fields
+3. **Verify** the output (e.g., login success/fail)
+4. **Repeat** for the next data row
+
+---
+
+## ⚙️ Pre-Requisites (Tools Required):
+
+| Tool/Library            | Use                     |
+| ----------------------- | ----------------------- |
+| Java JDK 1.5+           | Java execution          |
+| Apache POI v3.8+        | Read Excel files        |
+| Eclipse 3.2+            | IDE for Java            |
+| Selenium Standalone JAR | Automate browsers       |
+| TestNG 6.9              | Run parameterized tests |
+
+---
+
+## 📂 Scenario:
+
+**Task**: Login with multiple usernames/passwords stored in Excel (`Credentials.xlsx`)
+
+---
+
+## 🔢 Step-by-Step:
+
+### ✅ **Step 1: Prepare Excel File**
+
+* Create `Credentials.xlsx` like:
+
+| Username                                                | Password |
+| ------------------------------------------------------- | -------- |
+| [sowmya2311@gmail.com](mailto:sowmya2311@gmail.com)     | canend   |
+| [sowmya.v@cecanarys.com](mailto:sowmya.v@cecanarys.com) | canend   |
+
+---
+
+### ✅ **Step 2: Create POM Class (Loginpage.java)**
+
+* POM = Page Object Model
+* Create class with web elements using:
+
+```java
+@FindBy(id="email")
+WebElement email;
+
+@FindBy(id="password")
+WebElement password;
+```
+
+* Use PageFactory to initialize elements.
+
+---
+
+### ✅ **Step 3: Create SuperClass (SuperClass.java)**
+
+* This class:
+
+  * Reads from Excel using Apache POI
+  * Launches browser (e.g., Chrome)
+  * Connects the test script to Excel input
+* Also creates a base for reusable methods like `launchBrowser()`.
+
+---
+
+## 📚 Summary:
+
+You’re automating login tests using **Excel as input** by:
+
+* Reading each row from Excel
+* Supplying it to the web form
+* Verifying the result
+* Repeating the same test with new values
+
+---
+
+Would you like the complete Java code for reading Excel with Apache POI and running Selenium + TestNG DDT?
